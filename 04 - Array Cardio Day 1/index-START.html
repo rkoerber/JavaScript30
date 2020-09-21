@@ -70,8 +70,13 @@
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
-    const names = document.querySelector('.mw-category-group');
-    console.log(names);
+    const names = document.querySelectorAll('.mw-category-group a');
+
+    const namesWithDe = names.forEach(name => {
+      if(name.innerHTML.includes('de')) {
+        console.log(name.innerHTML)
+      };
+    });
 
 
     // 7. sort Exercise
@@ -86,11 +91,14 @@
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
 
     const instances = data.reduce((total, instance) => {
+      if(!total[instance]) {
+        total[instance] = 0
+      };
+      total[instance]++;
+      return total;
+    }, {});
 
-
-    });
-
-    // console.log(instances);
+    console.log(instances);
   </script>
 </body>
 </html>
